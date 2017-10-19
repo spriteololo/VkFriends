@@ -1,19 +1,18 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "by.brstu.dmitry.ui"
-        minSdkVersion 17
-        targetSdkVersion 26
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        vectorDrawables.useSupportLibrary = true
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,9 +23,21 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:26.+'
-    testCompile 'junit:junit:4.12'
+
+    // Support libs
+    compile libraries.supportAnnotations
+    compile libraries.supportAppCompat
+    compile libraries.supportDesign
+    compile libraries.supportCardView
+    compile libraries.supportRecyclerView
+    compile libraries.supportCardView
+    compile libraries.supportConstraintLayout
+
+    compile libraries.calligraphy
+
+    compile libraries.skeleton
+
+    compile libraries.glide
+
+    compile libraries.realTimeBlur
 }
