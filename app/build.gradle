@@ -69,4 +69,5 @@ dependencies {
 
     //expandableLayout
     compile libraries.expandableLayout
+    compile project(path: ':vksdk_library')
 }
