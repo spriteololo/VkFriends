@@ -7,13 +7,11 @@ import android.support.design.widget.NavigationView;
 import android.support.transition.TransitionManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -21,6 +19,7 @@ import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKSdk;
 import com.vk.sdk.api.VKError;
+import com.vk.sdk.util.VKUtil;
 
 import butterknife.BindView;
 import by.brstu.dmitry.vkfriends.R;
@@ -50,6 +49,7 @@ public class HomeScreenActivity extends BaseActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
     }
 
     @Override
@@ -59,6 +59,7 @@ public class HomeScreenActivity extends BaseActivity implements NavigationView.O
             public void onResult(VKAccessToken res) {
                 System.out.println("token = " + res.accessToken);
                 Constants.TOKEN = res.accessToken;
+
             }
 
             @Override

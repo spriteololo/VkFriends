@@ -53,7 +53,7 @@ public class BaseApplication extends Application {
 
     private void initApplicationComponent() {
         applicationComponent = DaggerApplicationComponent.builder()
-                .retrofitModule(new RetrofitModule(Constants.MovieDbApi.BASE_URL))
+                .retrofitModule(new RetrofitModule(Constants.VkApi.BASE_URL))
                 .networkModule(new NetworkModule(Constants.NetworkingConfig.TIMEOUT))
                 .build();
     }

@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.vk.sdk.VKScope;
-import com.vk.sdk.VKSdk;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import by.brstu.dmitry.vkfriends.R;
 import by.brstu.dmitry.vkfriends.ui.all.base.BaseMvpFragment;
 
-public class HomeFragment extends BaseMvpFragment {
+public class HomeFragment extends BaseMvpFragment implements HelloWorldView{
+
+    @InjectPresenter
+    HelloWorldPresenter helloWorldPresenter;
 
 
     public static HomeFragment getInstance() {
@@ -46,4 +48,8 @@ public class HomeFragment extends BaseMvpFragment {
         }
     }
 
+    @Override
+    public void setHelloWorld(String string) {
+        System.out.println(string);
+    }
 }
